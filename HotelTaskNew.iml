@@ -7,5 +7,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../Downloads/transformer" />
+          <root url="file://$MODULE_DIR$/../../../Downloads/transformer" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../../Downloads/transformer" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

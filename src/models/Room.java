@@ -12,11 +12,11 @@ public class Room {
     private LocalDate startData;
     private LocalDate duration;
 
-    public Room(int num){
+    public Room(int num) {
         Random random = new Random();
-        roomNumber=num;
+        roomNumber = num;
         category = Category.values()[random.nextInt(3)];
-        clients= new Client[category.getAccommodation()];
+        clients = new Client[category.getAccommodation()];
     }
 
     @Override
@@ -39,12 +39,12 @@ public class Room {
     }
 
     public boolean roomIsEmpty() {
-        int count=0;
-        for(int i =0; i<clients.length;i++){
-            if(clients[i]==null){
-                count+=1;
+        int count = 0;
+        for (int i = 0; i < clients.length; i++) {
+            if (clients[i] == null) {
+                count += 1;
             }
-            if(count==clients.length){
+            if (count == clients.length) {
                 return true;
             }
         }
@@ -54,19 +54,19 @@ public class Room {
     public void checkIn(Client clients) {
         System.out.println("День заселения: ");
         /*SimpleDateFormat dayFormat = new SimpleDateFormat("dd,MM,yyyy", Locale.getDefault());*/
-        startData = LocalDate.of(inputInteger("Year: "),inputInteger("Month: "),inputInteger("Day: "));
+        startData = LocalDate.of(inputInteger("Year: "), inputInteger("Month: "), inputInteger("Day: "));
 
         System.out.println("День выезда: ");
-        duration = LocalDate.of(inputInteger("Year: "),inputInteger("Month: "),inputInteger("Day: "));
-        for(int i=0;i<this.clients.length;i++){
-            if(roomIsEmpty()){
-                this.clients[0]=clients;
-            }
-            else {
-                System.out.println("Комната занята!");
-            }
+        duration = LocalDate.of(inputInteger("Year: "), inputInteger("Month: "), inputInteger("Day: "));
+
+        if (roomIsEmpty()) {
+            this.clients[0] = clients;
+        } else {
+            System.out.println("Комната занята!");
         }
+
     }
+
     private int inputInteger(String text) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(text);
@@ -110,9 +110,9 @@ public class Room {
     }
 
     public void setClient(Client client) {
-        for(int i=0;i<this.clients.length;i++){
-            if(!roomIsEmpty()){
-                this.clients[0]=client;
+        for (int i = 0; i < this.clients.length; i++) {
+            if (!roomIsEmpty()) {
+                this.clients[0] = client;
             }
         }
     }

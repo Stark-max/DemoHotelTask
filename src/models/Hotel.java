@@ -7,6 +7,22 @@ public class Hotel {
     private ArrayList<Room> rooms;
     public Client client;
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public Hotel() {
         initializeRooms();
         menu();
@@ -21,13 +37,14 @@ public class Hotel {
 
     private void menu() {
         registration();
-        while (true)
+        boolean action =true;
+        while (action)
             switch (inputInteger("1.Свободные комнаты\n2.Бронирование\n3.Удаление бронирования\n4.Регистрация\n0.Exit")) {
                 case 1 -> displayEmptyRooms();
                 case 2 -> reservation();
                 case 3 -> deleteReservation();
                 case 4 -> registration();
-                case 0 -> System.exit(0);
+                case 0 -> action=false;//System.exit(0);
             }
     }
 
@@ -100,5 +117,14 @@ public class Hotel {
         } else {
             return inputInteger("Введены неверные данные, повторите попытку ->");
         }
+    }
+
+    public Room getOccupied(){
+        for (Room r : rooms) {
+            if (!r.roomIsEmpty()) {
+                return r;
+            }
+        }
+        return null;
     }
 }
